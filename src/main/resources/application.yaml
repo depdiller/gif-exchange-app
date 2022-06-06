@@ -3,7 +3,7 @@ server:
 
 
 
-openexchangerates:
+openexchangerate:
   api:
     url: https://openexchangerates.org/api/
-    app_id: d08482c18e014da68d6b35049ca50cd1
+    appId: d08482c18e014da68d6b35049ca50cd1
