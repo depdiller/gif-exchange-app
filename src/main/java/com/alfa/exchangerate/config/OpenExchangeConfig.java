@@ -10,4 +10,5 @@ import org.springframework.stereotype.Component;
 public class OpenExchangeConfig {
     private String appId;
     private String url;
+    private String base;
 }
