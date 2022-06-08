@@ -1,5 +1,6 @@
 package com.alfa.exchangerate.client;
 
+import com.alfa.exchangerate.model.GiphyRes;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,5 +14,5 @@ public interface GiphyClient {
     @RequestMapping(method = RequestMethod.GET,
             path = "",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<Object> getGif(@RequestParam String api_key, @RequestParam String tag);
+    ResponseEntity<GiphyRes> getGif(@RequestParam String api_key, @RequestParam String tag);
 }

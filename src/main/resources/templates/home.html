@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Alfa</title>
+</head>
+<body style="background-color: #a1a1c3">
+<form th:action="@{/api/difference-in-rate}" th:object=${code} method="get">
+    <table align="center">
+        <tr><td>Choose currency code:</td>
+            <td><select name="currencyCode">
+                <option th:each="currencyCode : ${currencyCodes}" th:text="${currencyCode}"/>
+            </select></tr>
+        <tr><td><button type="submit">Check</button></td><td></td></tr>
+    </table>
+</form>
+</body>
+</html>
