@@ -1,7 +1,10 @@
 server:
   port: 8585
 
-
+giphy:
+  api:
+    apiKey: HWtloR33jm7x8XgU1fEZyx2a2Oyu8LhE
+    randomGifUrl: api.giphy.com/v1/gifs/random
 
 openexchangerate:
   api:

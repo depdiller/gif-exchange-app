@@ -1,6 +1,8 @@
 package com.alfa.exchangerate.controller;
 
+import com.alfa.exchangerate.client.GiphyClient;
 import com.alfa.exchangerate.client.OpenExchangeClient;
+import com.alfa.exchangerate.config.GiphyConfig;
 import com.alfa.exchangerate.config.OpenExchangeConfig;
 import com.alfa.exchangerate.model.HistoricalRates;
 import org.springframework.http.HttpStatus;
@@ -17,16 +19,22 @@ import java.util.Date;
 @RestController
 @RequestMapping("/api")
 @Validated
-public class ExchangeRateController {
+public class AppController {
     private final OpenExchangeClient openExchangeClient;
+    private final GiphyClient giphyClient;
     private final OpenExchangeConfig openExchangeConfig;
+    private final GiphyConfig giphyConfig;
     private final Calendar calendar = Calendar.getInstance();
     private final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-    public ExchangeRateController(OpenExchangeClient client,
-                                  OpenExchangeConfig config) {
-        openExchangeClient = client;
-        openExchangeConfig = config;
+    public AppController(OpenExchangeClient openExchangeClient,
+                         GiphyClient giphyClient,
+                         OpenExchangeConfig exchangeConfig,
+                         GiphyConfig giphyConfig) {
+        this.giphyClient = giphyClient;
+        this.openExchangeClient = openExchangeClient;
+        openExchangeConfig = exchangeConfig;
+        this.giphyConfig = giphyConfig;
     }
 
 //    @GetMapping("/latest")
@@ -40,6 +48,12 @@ public class ExchangeRateController {
 //                    HttpStatus.valueOf(feignEx.status()));
 //        }
 //    }
+
+    @GetMapping("/gif/{tag}")
+    public ResponseEntity<Object> getRandomGif(@PathVariable String tag) {
+        ResponseEntity<Object> giphyRes = giphyClient.getGif(giphyConfig.getApiKey(), tag);
+        return new ResponseEntity<>(giphyRes.getBody(), HttpStatus.valueOf(giphyRes.getStatusCodeValue()));
+    }
 
     @GetMapping("/difference-in-rate/{currencyCode}")
     public ResponseEntity<Object> checkDifferenceInRate(@PathVariable @Size(max = 3, min = 3) String currencyCode) {
