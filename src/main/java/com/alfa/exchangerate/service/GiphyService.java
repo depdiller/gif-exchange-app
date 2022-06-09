@@ -17,6 +17,10 @@ public class GiphyService {
 
     public String getCorrectUrl(String tag) {
         GiphyRes giphyRes = giphyClient.getGif(giphyConfig.getApiKey(), tag).getBody();
-        return giphyRes.getData().getImages().get("downsized").getUrl();
+        String url = null;
+        if (giphyRes != null) {
+            url = giphyRes.getData().getImages().get("downsized").getUrl();
+        }
+        return url;
     }
 }

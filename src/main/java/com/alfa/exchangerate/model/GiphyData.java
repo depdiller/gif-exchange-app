@@ -1,12 +1,12 @@
 package com.alfa.exchangerate.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 import java.util.Map;
 
 @Data
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class GiphyData {
     private Map<String, Image> images;
 }

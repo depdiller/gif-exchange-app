@@ -48,6 +48,10 @@ public class AppController {
         String url;
         String tag = differenceInRate < 0 ? GifSearchTag.Broke.toString() : GifSearchTag.Rich.toString();
         url = giphyService.getCorrectUrl(tag);
+        if (url == null) {
+            log.debug("Giphy Service error");
+            return "error";
+        }
         model.addAttribute("tag", tag);
         model.addAttribute("url", url);
         return "result-gif";

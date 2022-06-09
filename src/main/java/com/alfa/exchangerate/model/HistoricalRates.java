@@ -14,4 +14,9 @@ public class HistoricalRates {
 
     @JsonProperty("rates")
     Rate rate;
+    public HistoricalRates(String timestamp, String base, Rate rate) {
+        this.timestamp = timestamp;
+        this.base = base;
+        this.rate = rate;
+    }
 }
