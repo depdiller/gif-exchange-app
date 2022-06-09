@@ -1,6 +1,16 @@
 server:
   port: 8585
 
+
+
+logging:
+  level:
+    org.springframework: ERROR
+    com.alfa: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+    file: "%d %p %c{1.} [%t] %m%n"
+
 giphy:
   api:
     apiKey: HWtloR33jm7x8XgU1fEZyx2a2Oyu8LhE
