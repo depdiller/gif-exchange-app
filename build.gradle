@@ -4,9 +4,8 @@ plugins {
     id 'java'
 }
 
-group = 'com.alfa'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+group = 'com.example'
+version = '0.0.1'
 
 configurations {
     compileOnly {
@@ -14,24 +13,23 @@ configurations {
     }
 }
 
-ext {
-    set('springCloudVersion', "2021.0.3")
-}
-
 repositories {
     mavenCentral()
 }
 
+ext {
+    set('springCloudVersion', "2021.0.3")
+}
+
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.7'
-    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:3.1.2'
-    implementation 'org.springframework.boot:spring-boot-starter-validation:2.4.0'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.6.7'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:2.6.7'
     compileOnly 'org.projectlombok:lombok:1.18.24'
-    compileOnly "org.springframework.boot:spring-boot-starter-thymeleaf"
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.6.7'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'junit:junit:4.13.2'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.7'
-    testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner:3.1.2'
 }
 
 dependencyManagement {
@@ -43,3 +41,4 @@ dependencyManagement {
 tasks.named('test') {
     useJUnitPlatform()
 }
+

@@ -7,7 +7,6 @@ import com.alfa.exchangerate.config.OpenExchangeConfig;
 import com.alfa.exchangerate.model.HistoricalRates;
 import com.alfa.exchangerate.service.GiphyService;
 import com.alfa.exchangerate.service.OpenExchangeRateService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,12 +47,6 @@ public class AppController {
         model.addAttribute("currencyCodes", currencyCodes);
         return "home";
     }
-
-//    @GetMapping("/gif/{tag}")
-//    @ResponseBody
-//    public ResponseEntity<Object> getRandomGif(@PathVariable String tag) {
-//        giphyService.getCorrectUrl(tag);
-//    }
 
     @GetMapping("/difference-in-rate")
     public String checkDifferenceInRate(Model model, @RequestParam @Size(max = 3, min = 3) String currencyCode) {
