@@ -14,15 +14,15 @@ import javax.validation.ValidationException;
 @Slf4j
 public class ControllerExceptionHandler {
     @ExceptionHandler(ValidationException.class)
-    ResponseEntity<Object> exceptionHandler(ValidationException e) {
+    String exceptionHandler(ValidationException e) {
         log.error(e.getMessage());
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        return "error";
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
-    ResponseEntity<Object> exceptionHandler(ConstraintViolationException e) {
+    String exceptionHandler(ConstraintViolationException e) {
         log.error(e.getMessage());
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        return "error";
     }
 
     @ExceptionHandler(FeignException.class)

@@ -52,6 +52,7 @@ public class AppController {
             log.debug("Giphy Service error");
             return "error";
         }
+        tag = "We are " + tag + "!";
         model.addAttribute("tag", tag);
         model.addAttribute("url", url);
         return "result-gif";
