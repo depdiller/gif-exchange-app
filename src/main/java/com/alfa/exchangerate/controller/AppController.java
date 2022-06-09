@@ -35,7 +35,7 @@ public class AppController {
     @GetMapping("/difference-in-rate")
     public String checkDifferenceInRate(Model model, @RequestParam @Size(max = 3, min = 3) String currencyCode) {
         if (currencyCode.equals("USD")) {
-            String message = "Invalid currency code";
+            String message = "Default base is USD. Try another currency";
             log.debug(message);
             model.addAttribute("message", message);
             return "error";
@@ -49,7 +49,7 @@ public class AppController {
         String tag = differenceInRate < 0 ? GifSearchTag.Broke.toString() : GifSearchTag.Rich.toString();
         url = giphyService.getCorrectUrl(tag);
         if (url == null) {
-            log.debug("Giphy Service error");
+            log.debug("Giphy Service error. Check tag: " + tag);
             return "error";
         }
         tag = "We are " + tag + "!";

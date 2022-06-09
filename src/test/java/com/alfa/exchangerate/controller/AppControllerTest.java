@@ -54,6 +54,7 @@ class AppControllerTest {
 
     @Test
     void checkDifferenceInRate() throws Exception {
+        Mockito.when(giphyService.getCorrectUrl("rich")).thenReturn("url");
         this.mockMvc.perform(get("/difference-in-rate?currencyCode=RUB")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("We are")));
     }
